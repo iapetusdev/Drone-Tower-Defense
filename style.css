@@ -1,0 +1,86 @@
+html, body { margin:0; padding:0; overflow:hidden; background:#0b1020; }
+canvas { display:block; }
+
+#hud{
+  position:fixed; left:12px; top:12px;
+  color:#e9f0ff;
+  font:12px/1.25 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  background:rgba(0,0,0,0.35);
+  padding:10px 12px;
+  border-radius:12px;
+  white-space:pre;
+  user-select:none;
+}
+
+#help{
+  position:fixed; right:12px; top:12px;
+  color:#e9f0ff;
+  font:12px/1.25 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  background:rgba(0,0,0,0.35);
+  padding:10px 12px;
+  border-radius:12px;
+  user-select:none;
+  text-align:right;
+}
+
+/* ===== NEW: bottom shop HUD ===== */
+#shop{
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.35);
+  user-select: none;
+}
+
+.shopItem{
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.35);
+  color: #e9f0ff;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font: 12px/1.25 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  cursor: pointer;
+  min-width: 160px;
+  white-space: pre;
+  text-align: left;
+}
+
+.shopItem.selected{
+  outline: 2px solid rgba(122,162,255,0.85);
+}
+
+.shopItem.disabled{
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#gameoverPopup{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.55);
+  z-index: 9999;
+}
+
+#gameoverPopup .box{
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #e9f0ff;
+  padding: 18px 20px;
+  border-radius: 14px;
+  font: 16px/1.35 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space: pre; /* renders \n as a new line */
+  text-align: center;
+  min-width: 260px;
+}
