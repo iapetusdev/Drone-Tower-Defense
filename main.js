@@ -750,7 +750,6 @@ addEventListener("pointermove", (ev) => {
   const nowWorld = screenToGround(ev.clientX, ev.clientY);
   if (!dragStartWorld || !nowWorld) return;
 
-  // Move rig opposite of drag (so scene follows mouse)
   const dx = dragStartWorld.x - nowWorld.x;
   const dz = dragStartWorld.z - nowWorld.z;
   camRig.position.set(
@@ -769,8 +768,8 @@ addEventListener("contextmenu", (e) => e.preventDefault());
 function updateKeyboardPan(dt) {
   const pan = 120 * dt;
 
-  // --- Panning (same as before) ---
-  let mx = 0, mz = 0;
+  //This didn't really work with rotating
+  let mx = 0, mz = 0;//Moving around
   if (keys["a"] || keys["arrowleft"])  mx -= pan;
   if (keys["d"] || keys["arrowright"]) mx += pan;
   if (keys["w"] || keys["arrowup"])    mz -= pan;
@@ -779,7 +778,7 @@ function updateKeyboardPan(dt) {
   camRig.position.x = clamp(camRig.position.x + mx, -260, 260);
   camRig.position.z = clamp(camRig.position.z + mz, -260, 260);
 
-  // --- NEW: orbit rotation ---
+
   // Use Q/E to rotate around the current rig center
   if (keys["q"]) orbitYaw += orbitSpeed * dt;
   if (keys["e"]) orbitYaw -= orbitSpeed * dt;
@@ -793,7 +792,7 @@ function updateKeyboardPan(dt) {
   camera.position.x = Math.sin(orbitYaw) * r;
   camera.position.z = Math.cos(orbitYaw) * r;
 
-  // Always look at the rig (the “center” you’re orbiting)
+ 
   camera.lookAt(camRig.position.x, 0, camRig.position.z);
 }
 
@@ -864,9 +863,9 @@ function tick(now) {
     "Money $" + money.toFixed(1) +
     "  Bops " + Bops +
     "  Time " + Math.floor(timeAlive) + "s\n" +
-    "defenders " + defenders.length +
+    "Defenders " + defenders.length +
     "  Enemies " + enemies.length +
-    "  fires " + fires.length;
+    "  Fires " + fires.length;
 
   // keep shop disabled/selected states accurate as money changes
   updateShopUI();
@@ -885,4 +884,3 @@ addEventListener("resize", () => {
 });
 
 //Yay! 850 lines of code!
-//I'm proud of how neat it is, 
